@@ -56,7 +56,7 @@ def generateTape(k):
         elif r == 7:
             tape += "]"
         else:# r == 0:
-            tape += "" # will be ","
+            tape += "," # will be ","
     return tape
 
 def dumpTape(tape, p):
@@ -112,11 +112,15 @@ def run(tape, intape, debug=False):
             if ptr == -1:
                 memory = [0] + memory
                 ptr = 0
-        # if char == [  start loop, do nothing
+        if char == "[":
+            idx += 1
+            continue
 
         if char == ",":
-            memory[ptr] = intape[inidx]
-            inidx+=1
+            if inidx < len(intape):
+                memory[ptr] = intape[inidx]
+                inidx+=1
+            # ekse do nothing
 
         if char == "]":
             if memory[ptr] == 0:
