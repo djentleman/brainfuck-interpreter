@@ -129,7 +129,7 @@ def run(tape, intape, debug=False):
                 if tape[tmp] == "[":
                     nested -= 1
                     if nested == -1:
-                        idx = tmp
+                        idx = tmp+1
                         break
                 if tape[tmp] == "]":
                     nested += 1
